@@ -5,7 +5,7 @@ It takes information from shodan, c99, chaos api, urlscan and hackertarget.
 
 
 # Usage 
-recon.py <targe.com> <options>
+recon.py <target.com> <options>
   -s or --subdomains : List all subdomains for target
   -i or --ips : List all IP addresses for target
   -u or --urls : urls for target
