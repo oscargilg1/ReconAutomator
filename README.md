@@ -11,7 +11,7 @@ recon.py <target.com> <options>
   -u or --urls : urls for target
   
  # Note 
- In order for this tool to work you need to set the API keys for shodan, c99 and chaos api. Edit the recon.py and assigned the api keys.
+ In order for this tool to work you need to set the API keys for shodan, c99 and chaos api. Edit the recon.py and assign the api keys.
  
  # Todo
  Add more free sources
