@@ -1,11 +1,11 @@
 
+#!/usr/bin/python3
 import sys
-from os import system, name
-from time import sleep
 import subdomainFinder
 import shodan
 import ipFinder
 import urlScan
+import waybackmachine
 import argparse
 
 SHODAN_API_KEY = ""
@@ -36,6 +36,6 @@ if args.subdomains:
 if args.ips:
 	ipFinder.startFinder(target, c99_API_KEY, api_shodan)
 if args.urls:
-	urlScan.getUrls(target)
+	urlScan.getUrls(target),waybackmachine.getUrls(target)
 
 

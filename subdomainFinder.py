@@ -1,9 +1,11 @@
+#!/usr/bin/python3
 import c99
 import shodanAPI
 import hackertargetapi
 import chaosAPI
 import threading
 import json
+import waybackmachine
 
 subdomains = []
 
@@ -16,10 +18,13 @@ def startFinder(target, c99_API_KEY, api_shodan, chaos_api):
 	Shodan.start()
 	chaos = threading.Thread(target=chaosFinder, args=(target,chaos_api,))
 	chaos.start()
+	wayback = threading.Thread(target=waybackFinder, args=(target,))
+	wayback.start()
 	c99.join()
 	ht.join()
 	Shodan.join()
 	chaos.join()
+	wayback.join()
 	print('\n'.join(subdomains))
 	
 
@@ -54,3 +59,13 @@ def chaosFinder(target, chaos_api):
 		subs = Subdomains[i]
 		if subs not in subdomains:
 			subdomains.append(subs)	
+
+
+def waybackFinder(target):
+	Subs = waybackmachine.getSubs(target)
+	
+	for i in range(len(Subs)):
+		subs = Subs[i]
+		if subs not in subdomains:
+			subdomains.append(subs)
+	

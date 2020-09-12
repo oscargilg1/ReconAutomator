@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import c99
 import shodanAPI
 import hackertargetapi
