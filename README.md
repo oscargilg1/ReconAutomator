@@ -1,7 +1,7 @@
 # ReconAutmator
 A fast recon tool written in python3. 
 
-It takes information from shodan, c99, chaos api, urlscan and hackertarget. 
+It takes information from shodan, c99, chaos api, urlscan, waybackmachine and hackertarget. 
 
 
 # Usage 
