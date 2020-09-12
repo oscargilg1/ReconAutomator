@@ -21,8 +21,7 @@ class shodanapi():
         except:
             print("An error occurred")
 
-        if api_shodan is None:
-            pass
+
 
 
 
@@ -42,6 +41,3 @@ class shodanapi():
         except:
             print("An error occurred")
 
-
-        if api_shodan is None:
-            pass

@@ -11,19 +11,19 @@ subdomains = []
 
 def startFinder(target, c99_API_KEY, api_shodan, chaos_api):
 	c99 = threading.Thread(target=c99Finder, args=(target,c99_API_KEY,))
-	c99.start()
+	#c99.start()
 	ht = threading.Thread(target=htFinder, args=(target,))
-	ht.start()
+	#ht.start()
 	Shodan = threading.Thread(target=shodanSearch, args=(target, api_shodan))
 	Shodan.start()
 	chaos = threading.Thread(target=chaosFinder, args=(target,chaos_api,))
-	chaos.start()
+	#chaos.start()
 	wayback = threading.Thread(target=waybackFinder, args=(target,))
 	wayback.start()
-	c99.join()
-	ht.join()
+	#c99.join()
+	#ht.join()
 	Shodan.join()
-	chaos.join()
+	#chaos.join()
 	wayback.join()
 	print('\n'.join(subdomains))
 	
@@ -49,9 +49,10 @@ def shodanSearch(target, api_shodan):
 	Subdomains = shodanAPI.shodanapi()
 	subs = Subdomains.subfinder(target, api_shodan)
 	for i in range(len(subs)):
-		domain = json.dumps(subs[i])
+		domain = '\n'.join(subs[i])
 		if domain not in list(subdomains):
 			subdomains.append(domain)
+	
 	
 def chaosFinder(target, chaos_api):
 	Subdomains = chaosAPI.subFinder(target, chaos_api)
@@ -65,7 +66,7 @@ def waybackFinder(target):
 	Subs = waybackmachine.getSubs(target)
 	
 	for i in range(len(Subs)):
-		subs = Subs[i]
-		if subs not in subdomains:
-			subdomains.append(subs)
+		subDomains = Subs[i]
+		if subDomains not in subdomains:
+			subdomains.append(subDomains)
 	
