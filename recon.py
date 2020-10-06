@@ -7,11 +7,16 @@ import ipFinder
 import urlScan
 import waybackmachine
 import argparse
+import configparser
 
-SHODAN_API_KEY = ""
-c99_API_KEY = ""
+config = configparser.ConfigParser()
+
+config.read('config.ini')
+
+SHODAN_API_KEY = config.get('api-keys','shodan')
+c99_API_KEY = config.get('api-keys','c99')
 api_shodan = shodan.Shodan(SHODAN_API_KEY)
-chaos_api = ""
+chaos_api = config.get('api-keys','chaos')
 
 
 
